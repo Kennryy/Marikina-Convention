@@ -6,6 +6,15 @@ function closeForm() {
     document.getElementById("reservationForm").style.display = "none";
 }
 
+function validateForm() {
+        const contactNumber = document.getElementById("contactNumber").value;
+        if (!/^\d+$/.test(contactNumber)) {
+            alert("Contact number must contain only numbers.");
+            return false;
+        }
+        return true;
+    }
+
 // Improved validation
 function validateForm() {
     const fullName = document.getElementById("fullName").value.trim();
