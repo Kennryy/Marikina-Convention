@@ -55,6 +55,31 @@ document.addEventListener("DOMContentLoaded", function () {
     dateInput.min = today.toISOString().split('T')[0];
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+    var calendarEl = document.getElementById('calendar');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        selectable: false, // Disable user selection
+        events: [
+            {
+                title: 'Reserved - Wedding',
+                start: '2025-02-28',
+                end: '2025-02-28',
+                color: 'red' // Mark as reserved
+            },
+            {
+                title: 'Corporate Event',
+                start: '2025-03-05',
+                end: '2025-03-05',
+                color: 'red'
+            }
+        ]
+    });
+
+    calendar.render();
+});
+
 // Show error when clicking outside the form
 window.onclick = function (event) {
     const form = document.getElementById("reservationForm");
@@ -120,6 +145,7 @@ function setupCarousel(carouselId) {
         isDragging = false;
     });
 }
+
 
 // Initialize carousels
 document.addEventListener("DOMContentLoaded", function () {
