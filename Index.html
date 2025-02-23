@@ -238,19 +238,22 @@
             <h2>Reserve a Function Room</h2>
             <form id="reservationFormElement" onsubmit="return validateForm()">
                 <div class="form-group">
-                    <label for="fullName">Full Name</label>
-                    <input type="text" id="fullName" placeholder="Enter your full name" required>
+                    <label for="fullName">Full Name:</label>
+                    <input type="text" id="fullName" placeholder="Full Name" required>
                 </div>
+    
                 <div class="form-group">
-                    <label for="contactNumber">Contact Number</label>
-                    <input type="text" id="contactNumber" placeholder="Enter contact number" required pattern="[0-9]+" title="Only numbers allowed">
+                    <label for="contactNumber">Contact Number:</label>
+                    <input type="text" id="contactNumber" placeholder="Contact Number" required oninput="this.value=this.value.replace(/[^0-9]/g,'')">
                 </div>
+    
                 <div class="form-group">
-                    <label for="emailAddress">Email Address</label>
-                    <input type="email" id="emailAddress" placeholder="Enter email address" required>
+                    <label for="emailAddress">Email Address:</label>
+                    <input type="email" id="emailAddress" placeholder="Email Address" required>
                 </div>
+    
                 <div class="form-group">
-                    <label for="eventType">Event Type</label>
+                    <label for="eventType">Event Type:</label>
                     <select id="eventType" required>
                         <option value="">Select Event Type</option>
                         <option value="Wedding">Wedding</option>
@@ -258,24 +261,27 @@
                         <option value="Birthday">Birthday</option>
                     </select>
                 </div>
+    
                 <div class="form-group">
-                    <label for="eventDate">Event Date</label>
+                    <label for="eventDate">Event Date:</label>
                     <input type="date" id="eventDate" required>
                 </div>
+    
                 <div class="form-group">
-                    <label for="eventTime">Event Time</label>
+                    <label for="eventTime">Event Time:</label>
                     <input type="time" id="eventTime" required>
                 </div>
+    
                 <div class="form-group">
-                    <label for="clientRequest">Special Request (Optional)</label>
-                    <textarea id="clientRequest" placeholder="Write your request here..." rows="4"></textarea>
+                    <label for="clientRequest">Special Requests (Optional):</label>
+                    <textarea id="clientRequest" placeholder="Any special requests?" rows="4"></textarea>
                 </div>
-                <button type="submit">Submit Reservation</button>
+    
+                <button type="submit">Submit</button>
                 <button type="button" onclick="closeForm()">Cancel</button>
             </form>
         </div>
     </div>
-
     <!-- Footer -->
     <footer class="footer bg-dark text-white text-center p-3">
         <p>Contact Us: 09123456789 | Email: info@marikinaconvention.com</p>
