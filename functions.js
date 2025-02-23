@@ -15,39 +15,37 @@ function validateForm() {
         return true;
     }
 
-// Improved validation
-function validateForm() {
-    const fullName = document.getElementById("fullName").value.trim();
-    const contactNumber = document.getElementById("contactNumber").value.trim();
-    const emailAddress = document.getElementById("emailAddress").value.trim();
-    const eventType = document.getElementById("eventType").value;
-    const eventDate = document.getElementById("eventDate").value;
-    const eventTime = document.getElementById("eventTime").value;
-    const clientRequest = document.getElementById("clientRequest").value.trim();
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phoneRegex = /^[0-9]{10,11}$/; // Adjust for different phone formats
-
-    if (!fullName || !contactNumber || !emailAddress || !eventType || !eventDate || !eventTime) {
-        showNotification("Please fill out all required fields.");
+// Function to allow only numbers in the contact number field
+function isNumberKey(evt) {
+    var charCode = evt.which ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
         return false;
     }
-
-    if (!emailRegex.test(emailAddress)) {
-        showNotification("Please enter a valid email address.");
-        return false;
-    }
-
-    if (!phoneRegex.test(contactNumber)) {
-        showNotification("Please enter a valid contact number (10-11 digits).");
-        document.getElementById("contactNumber").style.borderColor = "red";
-        return false;
-    } else {
-        document.getElementById("contactNumber").style.borderColor = "";
-    }
-
     return true;
 }
+
+// Form Validation Function
+function validateForm() {
+    var fullName = document.getElementById("fullName").value.trim();
+    var contactNumber = document.getElementById("contactNumber").value.trim();
+    var emailAddress = document.getElementById("emailAddress").value.trim();
+    var eventType = document.getElementById("eventType").value;
+    var eventDate = document.getElementById("eventDate").value;
+    var eventTime = document.getElementById("eventTime").value;
+
+    if (fullName === "" || contactNumber === "" || emailAddress === "" || eventType === "" || eventDate === "" || eventTime === "") {
+        alert("Please fill out all required fields.");
+        return false;
+    }
+
+    if (contactNumber.length < 10 || contactNumber.length > 11) {
+        alert("Please enter a valid contact number (10-11 digits).");
+        return false;
+    }
+
+    return true; // Submit the form if all checks pass
+}
+
 
 // Disable past dates and same-day reservations
 document.addEventListener("DOMContentLoaded", function () {
